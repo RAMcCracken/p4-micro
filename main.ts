@@ -6,5 +6,17 @@ serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function() {
 })
 
 input.onButtonPressed(Button.A, function() {
-    serial.writeString("a\n")
+    if(input.buttonIsPressed(Button.B)){
+        serial.writeString("submit\n")
+    }else{
+        serial.writeString("a\n")
+    }
+})
+
+input.onButtonPressed(Button.B, function () {
+    if (input.buttonIsPressed(Button.A)) {
+        serial.writeString("submit\n")
+    } else {
+        serial.writeString("b\n")
+    }
 })
